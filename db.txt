@@ -1,0 +1,79 @@
+
+Database for next adventure
+
+- Destinations
+	-dest_id PK serial,
+	-dest_name string,
+	-dest_location string,
+	-dest_map_data string,
+	-dest_category_id int,
+	-dest_duration time,
+	-created_at timestamp,
+	-updated_at timestamp
+
+- Destination_category
+
+	-dest_cat_id PK serial,
+	-dest_cat_name string,
+	-created_at timestamp,
+	-updated_at timestamp
+
+- Destination_images
+	-dest_img_id PK serial,
+	-dest_id foreign key to Destinatins table cascade on delete: int,
+	-dest_img_src string
+	-created_at timestamp
+	-updated_at timestamp
+
+- guides_tbl
+	-guide_id PK serial,
+	-guide_name string,
+	-guide_contact string unique,
+	-guide_email string unique,
+	-guide_rating string,
+	-guide_price decimal,
+	-guide_img string,
+	-created_at timestamp
+	-updated_at timestamp
+
+-Destination_Guide_tbl
+	-dest_guide_id PK serial,
+	-dest_guide_destId foreign key Destinations table
+	-dest_guide_guideId foreign key Guide table
+	-created_at timestamp,
+	-updated_at timestamp
+
+
+-Users Tbl:
+	-user_id PK serial,
+	-user_email email unique,
+	-user_password password string,
+	-user_role_id int default user
+	-created_at timestamp,
+	-updated_at timestamp
+
+-User Role Tbl
+	- role_id PK serial,
+	- role_name string,
+	- created_at timestamp,
+	- updated_at timestamp
+
+
+-User Priviledges Tbl
+	-priv_id PK serial,
+	-role_id int
+	-priv_info string ('can_add_destination', 'can_update_destination', 'can_view_destination_date', 'can_save_destination')
+	-created_at timestamp
+	-updated_at timestamp
+
+-Notification_tbl
+	-notify_id PK serial,
+	-notify_data string,
+	-notify_type string, 
+	-notify_source string,
+	-notify_destination string,
+	-notify_is_viewed boolean,
+	-created_at timestamp,
+	-updated_at timestamp
+	
+	
