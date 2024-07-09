@@ -77,3 +77,33 @@ Database for next adventure
 	-updated_at timestamp
 	
 	
+
+
+Destination Categories
+-------------------------
+- Cultural Destinations 
+- Natural Destinations
+- Urban Destinations
+- Adventure Destinations
+	- Hiking
+	- Trekking
+	- Mountaineering
+	- Boungy
+	- Kayaking
+	- Rafting
+	- Paragliding
+	- Hot air ballon
+	- Jungle Safaris
+
+- Religious Destinations
+
+- Rural Destinations
+  - Homestays
+  - Volunteering
+
+- Event Destinations
+  - Concerts
+  - Sports Events
+  - Business Events
+
+

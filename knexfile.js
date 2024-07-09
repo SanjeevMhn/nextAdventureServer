@@ -3,18 +3,28 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+
+require('dotenv').config();
+const { CLIENT, HOST, DATABASE, USER, PASSWORD, PG_PORT } = process.env;
+
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: CLIENT,
     connection: {
-      host: process.env.HOST,
-      user: process.env.USER,
-      password: process.env.PASSWORD,
-      database: process.env.DATABASE
+      host    : HOST,
+      port    : PG_PORT,
+      user    : USER,
+      password: PASSWORD,
+      database: DATABASE
+    },
+    pool:{
+      min: 2,
+      max: 10
     },
     migrations: {
-      directory: __dirname + '/knex/migrations'
+      directory: __dirname + '/knex/migrations',
+      tableName: 'knex_migrations'
     },
     seeds: {
       directory: __dirname + '/knex/seeds'
@@ -22,7 +32,7 @@ module.exports = {
   },
 
   staging: {
-    client: 'postgresql',
+    client: CLIENT,
     connection: {
       database: 'my_db',
       user:     'username',
@@ -38,7 +48,7 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: CLIENT,
     connection: {
       database: 'my_db',
       user:     'username',
