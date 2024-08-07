@@ -1,7 +1,7 @@
-const CONSTANTS = {
-    CATEGORY_TBL: "destination_category"
-}
+const CATEGORY_TBL = "destination_category";
+const DESTINATIONS_TBL = "destinations";
 
-module.exports = {
-    ...CONSTANTS
+export {
+    CATEGORY_TBL,
+    DESTINATIONS_TBL
 }

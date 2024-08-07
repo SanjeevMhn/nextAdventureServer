@@ -1,6 +1,10 @@
-const knex = require('../knex/knex').knex;
-require('dotenv').config();
-const { CATEGORY_TBL } = require('../CONSTANTS');
+// const knex = require('../knex/knex').knex;
+import knex from '../knex/knex.js';
+import dotenv from 'dotenv';
+import { CATEGORY_TBL } from '../CONSTANTS.js';
+
+dotenv.config();
+
 
 const getCategories = async (req, res) => {
     try {
@@ -25,9 +29,9 @@ const addCategory = async (req, res) => {
             })
         }
 
-        let checkDuplicate = await knex.select('*').from(CATEGORY_TBL).where('cat_name',cat_name);
+        let checkDuplicate = await knex.select('*').from(CATEGORY_TBL).where('cat_name', cat_name);
 
-        if(checkDuplicate.length > 0){
+        if (checkDuplicate.length > 0) {
             return res.status(400).json({
                 message: 'Category already exists'
             })
@@ -49,12 +53,12 @@ const addCategory = async (req, res) => {
     }
 }
 
-const updateCategory = async(req, res) => {
-    try{
+const updateCategory = async (req, res) => {
+    try {
         const cat_id = req.params.id;
         const updates = req.body;
 
-        if(cat_id == null || cat_id == ''){
+        if (cat_id == null || cat_id == '') {
             return res.status(400).json({
                 message: 'Category id not found'
             });
@@ -62,13 +66,13 @@ const updateCategory = async(req, res) => {
 
         const checkCatExists = await knex.select('*').from(CATEGORY_TBL).where('cat_id', cat_id);
 
-        if(checkCatExists.length == 0){
+        if (checkCatExists.length == 0) {
             return res.status(400).json({
                 message: 'Category doesnot exist'
             })
         }
 
-        await knex(CATEGORY_TBL).update(updates).where('cat_id',cat_id);
+        await knex(CATEGORY_TBL).update(updates).where('cat_id', cat_id);
         res.status(200).json({
             status: 'success',
             message: 'Category updated successfully'
@@ -76,23 +80,23 @@ const updateCategory = async(req, res) => {
 
 
 
-    }catch(err){
+    } catch (err) {
         console.error(err);
         throw err;
     }
 }
 
-const deleteCategory = async(req,res) => {
-    try{
+const deleteCategory = async (req, res) => {
+    try {
         const cat_id = req.params.id;
-        if(cat_id == '' || cat_id == null || !cat_id){
+        if (cat_id == '' || cat_id == null || !cat_id) {
             return res.status(400).json({
                 message: 'Category not found'
             })
         }
 
-        const delCat = await knex.select('*').from(CATEGORY_TBL).where('cat_id',cat_id);
-        if(delCat.length == 0){
+        const delCat = await knex.select('*').from(CATEGORY_TBL).where('cat_id', cat_id);
+        if (delCat.length == 0) {
             return res.status(400).json({
                 message: 'Category not found'
             })
@@ -104,13 +108,13 @@ const deleteCategory = async(req,res) => {
             message: 'Category deleted successfully'
         });
 
-    }catch(err){
+    } catch (err) {
         console.error(err);
         throw err;
     }
 }
 
-module.exports = {
+export {
     getCategories,
     addCategory,
     updateCategory,

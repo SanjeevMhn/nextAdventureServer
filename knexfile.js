@@ -3,11 +3,18 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+import dotenv from 'dotenv'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-require('dotenv').config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config();
+
 const { CLIENT, HOST, DATABASE, USER, PASSWORD, PG_PORT } = process.env;
 
-module.exports = {
+const config = {
 
   development: {
     client: CLIENT,
@@ -64,3 +71,5 @@ module.exports = {
   }
 
 };
+
+export default config;
