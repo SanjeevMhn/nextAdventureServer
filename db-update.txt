@@ -1,0 +1,38 @@
+Posts
+	id: 
+	title:
+	description: WYSIWYG editor
+	category:
+	created_at:
+	updated_at:
+
+post_category
+	id: 
+	name:
+		blogs	
+		destinations
+		banner
+
+destionations_tbl
+	dest_id,
+ 	post_id foreign key to posts,
+ 	dest_location: 
+ 	dest_category,
+ 	has_guides,
+ 	created_at,
+ 	updated_at
+
+ destinations_category
+ 	cat_id,
+ 	cat_name,
+ 	created_at,
+ 	updated_at
+
+images_tbl
+	img_id,
+	post_id,
+	src,
+	created_at,
+	updated_at
+
+
