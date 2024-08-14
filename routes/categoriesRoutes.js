@@ -16,4 +16,4 @@ categoryRouter.route('/:id')
     .delete(deleteCategory)
 
 
-export default categoryRouter;
+export default categoryRouter;``

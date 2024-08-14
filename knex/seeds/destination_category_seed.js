@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 
  */
-exports.seed = async function(knex) {
+export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('destination_category').del()
   await knex('destination_category').insert([
@@ -35,4 +35,4 @@ exports.seed = async function(knex) {
       'cat_parent_id': null,
     },
   ]);
-};
+}

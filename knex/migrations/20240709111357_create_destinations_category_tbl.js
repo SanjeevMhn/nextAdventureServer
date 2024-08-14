@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function (knex) {
+export function up (knex) {
 	return knex.schema.createTable('destination_category', function (table) {
 		table.increments('cat_id').primary();
 		table.string('cat_name', 255).notNullable();
@@ -11,12 +11,12 @@ exports.up = function (knex) {
 		table.timestamp('created_at').defaultTo(knex.fn.now());
 		table.timestamp('updated_at').defaultTo(knex.fn.now());
 	})  
-};
+}
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function (knex) {
+export function down (knex) {
 	return knex.schema.dropTable('destination_category');
-};
+}
