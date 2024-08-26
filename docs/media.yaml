@@ -1,0 +1,32 @@
+
+tags:
+  - name: Banner Media Upload
+    description: Photos, videos upload for various types of banners
+
+paths:
+  /api/v1/media/upload:
+    post:
+      summary: Upload photo or video along with its type 
+      description: Upload photo or video aling with its identifier for its placement it the app
+      tags:
+        - Banner Media Upload
+
+      requestBody:
+        required: true
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                -image
+              properties:            
+                image:
+                  type: file
+                  format: binary
+                banner_info:
+                  type: string
+                  nullable: true
+                         
+      responses:
+            '200':
+              description: Success
